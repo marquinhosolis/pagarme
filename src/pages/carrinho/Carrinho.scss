@@ -9,6 +9,19 @@
 	}
 }
 
+.carrinhoVazioMensagem {
+	font-size: 20px;
+	a {
+		color: #e1997e;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	svg {
+		vertical-align: middle;
+	}
+}
+
 .carrinhoDetalhe {
 	h1 {
 		font-size: 24px;

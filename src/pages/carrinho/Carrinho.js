@@ -6,6 +6,9 @@ import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import ExcluirCarrinho from '../../components/ExcluirCarrinho/ExcluirCarrinho';
 
+import { IoArrowBack } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
+
 export default function Carrinho() {
 	const [produtosCarrinho, setProdutosCarrinho] = useState(
 		localStorage.getItem('@testePagarMe/carrinho') || ''
@@ -22,17 +25,15 @@ export default function Carrinho() {
 			// atribui o objeto à variavel (nova variavel devido a necessidade de ter um objeto para ser mapeado no render)
 			setListaProdutosCarrinho(produtos);
 		}
-		// toda vez que houver uma mudança, recalcula o total
-		calculaTotal();
-	}, [produtosCarrinho]);
 
-	function calculaTotal() {
+		// toda vez que houver uma mudança, recalcula o total
 		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
 		var carrinho = JSON.parse(produtosCarrinho);
 
 		// cria uma variavel soma
 		let somaTotais = 0;
 		// percorre o array
+
 		for (var index in carrinho) {
 			// recebe o preco unitario
 			let precoProduto = parseFloat(carrinho[index].price.substring(1));
@@ -44,7 +45,7 @@ export default function Carrinho() {
 
 		// seta o valor total do carrinho com o resultado
 		setTotal(somaTotais);
-	}
+	}, [produtosCarrinho]);
 
 	function aumentaQuantidade(idProduto, quantidade) {
 		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
@@ -95,9 +96,16 @@ export default function Carrinho() {
 			<main className="carrinhoMain">
 				<div className="container">
 					<div className="carrinhoDetalhe">
-						<h1>
-							Carrinho <span>2 itens</span>
-						</h1>
+						<h1>Carrinho {total !== 0 && <span>2 itens</span>}</h1>
+						{total === 0 && (
+							<p className="carrinhoVazioMensagem">
+								Seu carrinho está vazio! <br />
+								<br />
+								<Link to="/">
+									<IoArrowBack /> selecionar produtos
+								</Link>
+							</p>
+						)}
 						<ul className="vitrineCarrinho">
 							{listaProdutosCarrinho.map((produto) => (
 								<li key={produto.isbn13}>
@@ -160,36 +168,39 @@ export default function Carrinho() {
 							))}
 						</ul>
 					</div>
-					<div className="carrinhoResumo">
-						<h2>Resumo do Pedido</h2>
-
-						<table>
-							<tbody>
-								<tr>
-									<td>Total</td>
-									<td>R$ {total.toFixed(2)}</td>
-								</tr>
-								<tr>
-									<td>Frete</td>
-									<td>R$ 14.90</td>
-								</tr>
-							</tbody>
-						</table>
-						<div className="totalPedido">
+					{total !== 0 && (
+						<div className="carrinhoResumo">
+							<h2>Resumo do Pedido</h2>
 							<table>
 								<tbody>
 									<tr>
 										<td>Total</td>
-										<td>R$ {(total + 14.9).toFixed(2)}</td>
+										<td>R$ {total.toFixed(2)}</td>
+									</tr>
+									<tr>
+										<td>Frete</td>
+										<td>R$ 14.90</td>
 									</tr>
 								</tbody>
 							</table>
+							<div className="totalPedido">
+								<table>
+									<tbody>
+										<tr>
+											<td>Total</td>
+											<td>
+												R$ {(total + 14.9).toFixed(2)}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p className="prazoEntrega">
+								Previsão de Entrega: 5 dias | 20 de julho
+							</p>
+							<Button>prosseguir</Button>
 						</div>
-						<p className="prazoEntrega">
-							Previsão de Entrega: 5 dias | 20 de julho
-						</p>
-						<Button>prosseguir</Button>
-					</div>
+					)}
 				</div>
 			</main>
 		</>
