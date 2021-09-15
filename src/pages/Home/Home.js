@@ -9,8 +9,7 @@ import CarrinhoSuspenso from '../../components/CarrinhoSuspenso/CarrinhoSuspenso
 import CarregandoProdutos from '../../components/CarregandoProdutos/CarregandoProdutos';
 
 import BannerImage from '../../assets/images/Home_banner-cover-image.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { IoAddOutline } from 'react-icons/io5';
 
 export default function Home() {
 	const [loading, setLoading] = useState(true);
@@ -77,8 +76,7 @@ export default function Home() {
 								).toFixed(2)}`}</p>
 								<div onClick={() => adicionarCarrinho(item)}>
 									<Button>
-										<FontAwesomeIcon icon={faCartPlus} />
-										adicionar ao carrinho
+										<IoAddOutline /> adicionar ao carrinho
 									</Button>
 								</div>
 							</div>

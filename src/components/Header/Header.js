@@ -1,8 +1,7 @@
 import { React, useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { IoCartOutline } from 'react-icons/io5';
 import Logo from '../../assets/images/logo.png';
 
 import './Header.scss';
@@ -40,7 +39,7 @@ export default function Header(props) {
 				</div>
 				<div className="mainHeaderCarrinho">
 					<Link to="/carrinho">
-						<FontAwesomeIcon icon={faShoppingCart} />
+						<IoCartOutline />
 						<span>{qtdeProdutosCarrinho}</span>
 					</Link>
 				</div>

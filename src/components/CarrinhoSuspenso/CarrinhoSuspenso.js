@@ -2,8 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './CarrinhoSuspenso.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { IoClose, IoArrowForward, IoTrashOutline } from 'react-icons/io5';
 import Button from '../Button/Button';
 
 export default function CarrinhoSuspenso(props) {
@@ -31,7 +30,7 @@ export default function CarrinhoSuspenso(props) {
 				className="closeCarrinhoSuspenso"
 				onClick={fecharCarrinhoSuspenso}
 			>
-				<FontAwesomeIcon icon={faTimes} />
+				<IoClose />
 			</div>
 			<div className="carrinhoSuspensoTitulo">
 				Item Adicionado ao Carrinho!
@@ -54,7 +53,9 @@ export default function CarrinhoSuspenso(props) {
 				</ul>
 			</div>
 			<Link to="/carrinho">
-				<Button cor="btn-branco">Finalizar compra</Button>
+				<Button cor="btn-branco">
+					Finalizar compra <IoArrowForward />
+				</Button>
 			</Link>
 			<div
 				className="continuarComprandoLink"
