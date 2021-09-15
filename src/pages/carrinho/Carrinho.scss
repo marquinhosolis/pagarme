@@ -1,0 +1,103 @@
+.carrinhoMain {
+	margin-top: 60px;
+	.container {
+		@media (min-width: 768px) {
+			display: flex;
+			align-items: start;
+			justify-content: space-between;
+		}
+	}
+}
+
+.carrinhoDetalhe {
+	h1 {
+		font-size: 24px;
+		span {
+			display: inline-block;
+			margin-left: 20px;
+			color: rgba(0, 0, 0, 0.4);
+			font-size: 16px;
+			text-transform: uppercase;
+		}
+	}
+	.vitrineCarrinho {
+		list-style: none;
+		padding: 0;
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px 0;
+			border-bottom: 1px solid #ececec;
+			.excluirCarrinho {
+				color: #000;
+			}
+			.vitrineCarrinhoImagem {
+				width: 80px;
+				aspect-ratio: 1/1;
+				padding: 10px;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+				}
+			}
+			.vitrineCarrinhoTexto {
+				flex: 1;
+				font-size: 14px;
+			}
+			.vitrineCarrinhoPreco {
+				margin-left: 10px;
+				font-weight: bold;
+			}
+		}
+	}
+	@media (min-width: 768px) {
+		margin: 10px;
+		width: calc(60% - 20px);
+	}
+}
+
+.carrinhoResumo {
+	border: solid 1px #ccc;
+	padding: 20px;
+	table {
+		width: 100%;
+		tfoot {
+			display: table-cell;
+			column-span: 2;
+			border-bottom: solid 1px red;
+			tr {
+				td {
+					padding-top: 30px;
+				}
+			}
+		}
+		tr {
+			td {
+				&:nth-child(2) {
+					text-align: right;
+				}
+			}
+		}
+	}
+	.totalPedido {
+		padding-top: 15px;
+		margin-top: 15px;
+		border-top: solid 1px #ececec;
+		font-weight: bold;
+	}
+	.prazoEntrega {
+		color: #666;
+		font-size: 14px;
+		margin: 20px 0;
+		text-align: right;
+	}
+	.btn {
+		font-size: 16px;
+	}
+	@media (min-width: 768px) {
+		margin: 10px;
+		width: calc(40% - 20px);
+	}
+}
