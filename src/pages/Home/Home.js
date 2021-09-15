@@ -11,7 +11,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 export default function Home() {
 	const [produtos, setProdutos] = useState([]);
 	const [produtosCarrinho, setProdutosCarrinho] = useState(
-		localStorage.getItem('@testePagarMe/produtosCarrinho')
+		localStorage.getItem('@testePagarMe/carrinho')
 	);
 
 	useEffect(() => {
