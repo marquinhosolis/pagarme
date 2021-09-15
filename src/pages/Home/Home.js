@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Home.scss';
 
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import BannerImage from '../../assets/images/Home_banner-cover-image.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
