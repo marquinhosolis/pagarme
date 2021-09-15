@@ -2,6 +2,13 @@ import React from 'react';
 
 import './Carrinho.scss';
 
+import Header from '../../components/Header';
+
 export default function Carrinho() {
-	return <div>carrinho</div>;
+	return (
+		<div>
+			<Header />
+			carrinho
+		</div>
+	);
 }

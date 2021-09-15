@@ -2,6 +2,13 @@ import React from 'react';
 
 import './Checkout.scss';
 
+import Header from '../../components/Header';
+
 export default function Checkout() {
-	return <div>checkout</div>;
+	return (
+		<div>
+			<Header />
+			checkout
+		</div>
+	);
 }
