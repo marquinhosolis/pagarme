@@ -11,6 +11,7 @@ export default function Carrinho() {
 		localStorage.getItem('@testePagarMe/carrinho') || ''
 	);
 	const [listaProdutosCarrinho, setListaProdutosCarrinho] = useState([]);
+	const [total, setTotal] = useState(0);
 
 	//useEffect para acompanhar mudanca no estado dos produtos no carrinho
 	useEffect(() => {
@@ -21,7 +22,29 @@ export default function Carrinho() {
 			// atribui o objeto à variavel (nova variavel devido a necessidade de ter um objeto para ser mapeado no render)
 			setListaProdutosCarrinho(produtos);
 		}
+		// toda vez que houver uma mudança, recalcula o total
+		calculaTotal();
 	}, [produtosCarrinho]);
+
+	function calculaTotal() {
+		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
+		var carrinho = JSON.parse(produtosCarrinho);
+
+		// cria uma variavel soma
+		let somaTotais = 0;
+		// percorre o array
+		for (var index in carrinho) {
+			// recebe o preco unitario
+			let precoProduto = parseFloat(carrinho[index].price.substring(1));
+			//recebe o valor unitario
+			let qtdeProduto = carrinho[index].qtde;
+			// atribui à soma total o valor da multiplicaco do preco * quantidade
+			somaTotais = somaTotais + qtdeProduto * precoProduto;
+		}
+
+		// seta o valor total do carrinho com o resultado
+		setTotal(somaTotais);
+	}
 
 	function aumentaQuantidade(idProduto, quantidade) {
 		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
@@ -144,11 +167,11 @@ export default function Carrinho() {
 							<tbody>
 								<tr>
 									<td>Total</td>
-									<td>R$ 319,00</td>
+									<td>R$ {total.toFixed(2)}</td>
 								</tr>
 								<tr>
 									<td>Frete</td>
-									<td>R$ 14,90</td>
+									<td>R$ 14.90</td>
 								</tr>
 							</tbody>
 						</table>
@@ -157,7 +180,7 @@ export default function Carrinho() {
 								<tbody>
 									<tr>
 										<td>Total</td>
-										<td>R$ 328,00</td>
+										<td>R$ {(total + 14.9).toFixed(2)}</td>
 									</tr>
 								</tbody>
 							</table>
