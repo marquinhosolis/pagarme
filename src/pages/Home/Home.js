@@ -10,15 +10,35 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
 	const [produtos, setProdutos] = useState([]);
+	const [produtosCarrinho, setProdutosCarrinho] = useState(
+		localStorage.getItem('@testePagarMe/produtosCarrinho')
+	);
 
 	useEffect(() => {
 		fetch('https://api.itbook.store/1.0/search/front-end/')
 			.then((res) => res.json())
 			.then((json) => setProdutos(json.books));
 	}, []);
+
+	function adicionarCarrinho(dadosProduto) {
+		let carrinho =
+			JSON.parse(localStorage.getItem('@testePagarMe/carrinho')) || [];
+
+		if (!carrinho.some((el) => el.id === dadosProduto.id)) {
+			carrinho.push(dadosProduto);
+		}
+
+		localStorage.setItem(
+			'@testePagarMe/carrinho',
+			JSON.stringify(carrinho)
+		);
+
+		setProdutosCarrinho(localStorage.getItem('@testePagarMe/carrinho'));
+	}
+
 	return (
 		<>
-			<Header />
+			<Header itemsCarrinho={produtosCarrinho} />
 			<div className="bannerCover">
 				<div className="container">
 					<h1>
@@ -39,10 +59,12 @@ export default function Home() {
 								<p className="precoProduto">{`R$ ${parseFloat(
 									item.price.substring(1)
 								).toFixed(2)}`}</p>
-								<Button>
-									<FontAwesomeIcon icon={faCartPlus} />
-									adicionar ao carrinho
-								</Button>
+								<div onClick={() => adicionarCarrinho(item)}>
+									<Button>
+										<FontAwesomeIcon icon={faCartPlus} />
+										adicionar ao carrinho
+									</Button>
+								</div>
 							</div>
 						</div>
 					))}
