@@ -8,7 +8,9 @@ import Logo from '../../assets/images/logo.png';
 import './Header.scss';
 
 export default function Header(props) {
-	const [qtdeProdutosCarrinho, setQtdeProdutosCarrinho] = useState('0');
+	const [qtdeProdutosCarrinho, setQtdeProdutosCarrinho] = useState(
+		JSON.parse(localStorage.getItem('@testePagarMe/carrinho')).length
+	);
 
 	useEffect(() => {
 		if (props.itemsCarrinho) {
