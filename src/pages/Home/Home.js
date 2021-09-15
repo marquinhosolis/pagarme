@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react';
+import SkeletonLoader from 'tiny-skeleton-loader-react';
 
 import './Home.scss';
 
@@ -10,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
+	const [loading, setLoading] = useState(true);
 	const [exibeCarrinhoSuspenso, setExibeCarrinhoSuspenso] = useState(false);
 	const [produtos, setProdutos] = useState([]);
 	const [produtosCarrinho, setProdutosCarrinho] = useState(
@@ -19,7 +21,10 @@ export default function Home() {
 	useEffect(() => {
 		fetch('https://api.itbook.store/1.0/search/front-end/')
 			.then((res) => res.json())
-			.then((json) => setProdutos(json.books));
+			.then((json) => {
+				setLoading(false);
+				setProdutos(json.books);
+			});
 	}, []);
 
 	function adicionarCarrinho(dadosProduto) {
@@ -56,6 +61,61 @@ export default function Home() {
 			</div>
 			<div className="vitrineProdutos">
 				<div className="container">
+					{loading && (
+						<div className="loading">
+							<div className="loading">
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+								<div className="singleSkeleton">
+									<SkeletonLoader height="350px" />
+									<SkeletonLoader />
+									<SkeletonLoader width="80%" />
+									<SkeletonLoader />
+								</div>
+							</div>
+						</div>
+					)}
+
 					{produtos.map((item) => (
 						<div className="produto" key={item.isbn13}>
 							<div className="imagemProduto">
