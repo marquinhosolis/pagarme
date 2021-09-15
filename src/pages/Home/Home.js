@@ -4,11 +4,13 @@ import './Home.scss';
 
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
+import CarrinhoSuspenso from '../../components/CarrinhoSuspenso/CarrinhoSuspenso';
 import BannerImage from '../../assets/images/Home_banner-cover-image.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
+	const [exibeCarrinhoSuspenso, setExibeCarrinhoSuspenso] = useState(false);
 	const [produtos, setProdutos] = useState([]);
 	const [produtosCarrinho, setProdutosCarrinho] = useState(
 		localStorage.getItem('@testePagarMe/carrinho')
@@ -24,8 +26,9 @@ export default function Home() {
 		let carrinho =
 			JSON.parse(localStorage.getItem('@testePagarMe/carrinho')) || [];
 
-		if (!carrinho.some((el) => el.id === dadosProduto.id)) {
-			carrinho.push(dadosProduto);
+		if (!carrinho.some((el) => el.isbn13 === dadosProduto.isbn13)) {
+			dadosProduto.qtde = carrinho.push(dadosProduto);
+			setExibeCarrinhoSuspenso(true);
 		}
 
 		localStorage.setItem(
@@ -38,6 +41,10 @@ export default function Home() {
 
 	return (
 		<>
+			<CarrinhoSuspenso
+				produtos={produtosCarrinho}
+				exibir={exibeCarrinhoSuspenso}
+			/>
 			<Header itemsCarrinho={produtosCarrinho} />
 			<div className="bannerCover">
 				<div className="container">

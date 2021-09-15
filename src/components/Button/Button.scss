@@ -1,7 +1,7 @@
 .btn {
 	cursor: pointer;
 	width: 100%;
-	padding: 8px 15px;
+	padding: 10px 15px;
 	background: #e1997e;
 	border: 0;
 	color: #fff;
@@ -16,5 +16,19 @@
 	svg {
 		font-size: 20px;
 		margin-right: 8px;
+	}
+}
+
+.btn-branco {
+	background: #fff;
+	color: #e1997e;
+}
+
+.btn-preto {
+	background: #000;
+	color: #fff;
+	&:hover {
+		background: #e1997e;
+		color: #fff;
 	}
 }

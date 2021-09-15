@@ -3,5 +3,5 @@ import React from 'react';
 import './Button.scss';
 
 export default function Button(props) {
-	return <button className="btn">{props.children}</button>;
+	return <button className={`btn ${props.cor}`}>{props.children}</button>;
 }
