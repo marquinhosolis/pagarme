@@ -2,7 +2,12 @@ import { React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './CarrinhoSuspenso.scss';
-import { IoClose, IoArrowForward, IoTrashOutline } from 'react-icons/io5';
+import {
+	IoClose,
+	IoArrowForward,
+	IoBagCheckOutline,
+	IoArrowBack,
+} from 'react-icons/io5';
 import Button from '../Button/Button';
 
 export default function CarrinhoSuspenso(props) {
@@ -33,12 +38,12 @@ export default function CarrinhoSuspenso(props) {
 				<IoClose />
 			</div>
 			<div className="carrinhoSuspensoTitulo">
-				Item Adicionado ao Carrinho!
+				<IoBagCheckOutline /> Item Adicionado ao Carrinho!
 			</div>
 			<div className="listaProdutosCarrinho">
 				<ul>
 					{produtosCarrinho.reverse().map((produto) => (
-						<li key={produto.isbn13}>
+						<li key={produto.id}>
 							<div className="listaProdutosCarrinhoImagem">
 								<img src={produto.image} alt="" />
 							</div>

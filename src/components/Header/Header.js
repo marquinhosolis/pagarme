@@ -40,7 +40,11 @@ export default function Header(props) {
 				<div className="mainHeaderCarrinho">
 					<Link to="/carrinho">
 						<IoCartOutline />
-						<span>{qtdeProdutosCarrinho}</span>
+						<span>
+							<div className="content">
+								{qtdeProdutosCarrinho}
+							</div>
+						</span>
 					</Link>
 				</div>
 			</div>

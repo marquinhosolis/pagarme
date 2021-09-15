@@ -75,9 +75,7 @@ export default function Home() {
 									item.price.substring(1)
 								).toFixed(2)}`}</p>
 								<div onClick={() => adicionarCarrinho(item)}>
-									<Button>
-										<IoAddOutline /> adicionar ao carrinho
-									</Button>
+									<Button>Adicionar ao carrinho</Button>
 								</div>
 							</div>
 						</div>
