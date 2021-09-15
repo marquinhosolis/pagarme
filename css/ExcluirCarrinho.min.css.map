@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,AAAC,CAChB,YAAY,CAAE,IAAI,CAClB,KAAK,CAAE,IAAI,CACX,SAAS,CAAE,IAAI,CACf,OAAO,CAAE,GAAG,CAIZ,AARD,AAKC,gBALe,CAKf,GAAG,AAAC,CACH,MAAM,CAAE,OAAO,CACf",
+    "sources": [
+        "../src/components/ExcluirCarrinho/ExcluirCarrinho.scss"
+    ],
+    "names": [],
+    "file": "ExcluirCarrinho.min.css"
+}

@@ -1,9 +1,9 @@
 .carrinhoMain {
-	margin: 60px 0;
+	margin-top: 60px;
 	.container {
 		@media (min-width: 768px) {
 			display: flex;
-			align-items: flex-start;
+			align-items: start;
 			justify-content: space-between;
 		}
 	}
@@ -67,6 +67,19 @@
 						}
 					}
 				}
+				.vitrineCarrinhoQuantidade {
+					display: inline-block;
+					padding: 5px 0;
+					margin-top: 5px;
+					border: solid 1px #ececec;
+					button {
+						cursor: pointer;
+						font-size: 20px;
+						margin: 0 10px;
+						background: none;
+						border: 0;
+					}
+				}
 			}
 			.vitrineCarrinhoPreco {
 				margin-left: 10px;
@@ -81,8 +94,6 @@
 }
 
 .carrinhoResumo {
-	position: sticky;
-	top: 80px;
 	border: solid 1px #ccc;
 	padding: 20px;
 	table {

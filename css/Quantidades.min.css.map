@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,0BAA0B,AAAC,CAC1B,OAAO,CAAE,YAAY,CACrB,OAAO,CAAE,KAAK,CACd,UAAU,CAAE,GAAG,CACf,MAAM,CAAE,iBAAiB,CAQzB,AAZD,AAKC,0BALyB,CAKzB,MAAM,AAAC,CACN,MAAM,CAAE,OAAO,CACf,SAAS,CAAE,IAAI,CACf,MAAM,CAAE,MAAM,CACd,UAAU,CAAE,IAAI,CAChB,MAAM,CAAE,CAAC,CACT",
+    "sources": [
+        "../src/components/Quantidades/Quantidades.scss"
+    ],
+    "names": [],
+    "file": "Quantidades.min.css"
+}

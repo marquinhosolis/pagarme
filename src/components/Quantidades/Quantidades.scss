@@ -1,0 +1,13 @@
+.vitrineCarrinhoQuantidade {
+	display: inline-block;
+	padding: 5px 0;
+	margin-top: 5px;
+	border: solid 1px #ececec;
+	button {
+		cursor: pointer;
+		font-size: 20px;
+		margin: 0 10px;
+		background: none;
+		border: 0;
+	}
+}
