@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 
 import './Home.scss';
 
@@ -9,6 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
+	const [produtos, setProdutos] = useState([]);
+
+	useEffect(() => {
+		fetch('https://api.itbook.store/1.0/search/front-end/')
+			.then((res) => res.json())
+			.then((json) => setProdutos(json.books));
+	}, []);
 	return (
 		<>
 			<Header />
@@ -22,20 +29,23 @@ export default function Home() {
 			</div>
 			<div className="vitrineProdutos">
 				<div className="container">
-					<div className="produto">
-						<div className="imagemProduto">
-							<img src="#" alt="" />
+					{produtos.map((item) => (
+						<div className="produto" key={item.isbn13}>
+							<div className="imagemProduto">
+								<img src={item.image} alt={item.title} />
+							</div>
+							<div className="textoProduto">
+								<h3 className="tituloProduto">{item.title}</h3>
+								<p className="precoProduto">{`R$ ${parseFloat(
+									item.price.substring(1)
+								).toFixed(2)}`}</p>
+								<Button>
+									<FontAwesomeIcon icon={faCartPlus} />
+									adicionar ao carrinho
+								</Button>
+							</div>
 						</div>
-						<div className="textoProduto">
-							<h3 className="tituloProduto">nome do produto</h3>
-							<p className="precoAntigo">R$ 899,00</p>
-							<p className="precoProduto">R$ 799,99</p>
-							<Button>
-								<FontAwesomeIcon icon={faCartPlus} />
-								adicionar ao carrinho
-							</Button>
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
 		</>
