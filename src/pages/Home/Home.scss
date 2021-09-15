@@ -41,3 +41,85 @@
 		}
 	}
 }
+
+.vitrineProdutos {
+	margin: 50px 0;
+	.container {
+		//
+		padding: 0 10px;
+		display: flex;
+		align-items: stretch;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+	.produto {
+		transition: all linear 0.1s;
+		width: calc(50% - 16px);
+		margin: 8px;
+		border: solid 1px #ccc;
+		.imagemProduto {
+			//
+			aspect-ratio: 3/4;
+			background: #ececec;
+			width: 100%;
+			img {
+				display: block;
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+		.textoProduto {
+			//
+			padding: 10px;
+			.tituloProduto {
+				font-size: 18px;
+				margin: 8px 0;
+				font-size: 16px;
+			}
+			.precoAntigo {
+				margin: 0;
+				font-size: 14px;
+				text-decoration: line-through;
+			}
+			.precoProduto {
+				margin: 0;
+				margin-bottom: 16px;
+				font-weight: lighter;
+				font-size: 20px;
+			}
+			button {
+				cursor: pointer;
+				width: 100%;
+				padding: 8px 15px;
+				background: #e1997e;
+				border: 0;
+				color: #fff;
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: 11px;
+				line-height: 1.3;
+				display: flex;
+				align-items: center;
+				text-align: left;
+				justify-content: space-around;
+				svg {
+					font-size: 20px;
+					margin-right: 8px;
+				}
+			}
+		}
+		@media (min-width: 768px) {
+			width: calc(33% - 16px);
+		}
+		@media (min-width: 1024px) {
+			margin: 15px;
+			width: calc(25% - 30px);
+		}
+		&:hover {
+			// border: solid 5px #e1997e;
+			transform: scale(1.05);
+			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+		}
+	}
+}
