@@ -9,8 +9,19 @@ import './Header.scss';
 
 export default function Header(props) {
 	const [qtdeProdutosCarrinho, setQtdeProdutosCarrinho] = useState(
-		JSON.parse(localStorage.getItem('@testePagarMe/carrinho')).length
+		qtdeInicialCarrinho()
 	);
+
+	function qtdeInicialCarrinho() {
+		if (
+			JSON.parse(localStorage.getItem('@testePagarMe/carrinho')) != null
+		) {
+			return JSON.parse(localStorage.getItem('@testePagarMe/carrinho'))
+				.length;
+		} else {
+			return 0;
+		}
+	}
 
 	useEffect(() => {
 		if (props.itemsCarrinho) {
