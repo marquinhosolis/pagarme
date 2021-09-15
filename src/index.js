@@ -13,7 +13,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Router>
 			<div>
-				<ul>
+				{/* <ul>
 					<li>
 						<Link to="/">Home</Link>
 					</li>
@@ -23,7 +23,7 @@ ReactDOM.render(
 					<li>
 						<Link to="/checkout">Checkout</Link>
 					</li>
-				</ul>
+				</ul> */}
 
 				<Switch>
 					<Route exact path="/">
