@@ -45,6 +45,28 @@
 			.vitrineCarrinhoTexto {
 				flex: 1;
 				font-size: 14px;
+				p {
+					margin-bottom: 0;
+					span {
+						display: block;
+						@media (min-width: 768px) {
+							display: inline-block;
+						}
+					}
+				}
+				.vitrineCarrinhoQuantidade {
+					display: inline-block;
+					padding: 5px 0;
+					margin-top: 5px;
+					border: solid 1px #ececec;
+					button {
+						cursor: pointer;
+						font-size: 20px;
+						margin: 0 10px;
+						background: none;
+						border: 0;
+					}
+				}
 			}
 			.vitrineCarrinhoPreco {
 				margin-left: 10px;

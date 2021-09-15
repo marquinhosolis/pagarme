@@ -14,14 +14,57 @@ export default function Carrinho() {
 
 	//useEffect para acompanhar mudanca no estado dos produtos no carrinho
 	useEffect(() => {
-		//se tiver itens no carrinho e a exibicao do carrinho estiver liberada
+		//se tiver itens no carrinho
 		if (produtosCarrinho != null) {
-			// converte em objeto e inverte a ordem para os itens mais recentes ficarem no topo da lista
-			let produtos = JSON.parse(produtosCarrinho).reverse();
+			// converte em objeto
+			let produtos = JSON.parse(produtosCarrinho);
 			// atribui o objeto à variavel (nova variavel devido a necessidade de ter um objeto para ser mapeado no render)
 			setListaProdutosCarrinho(produtos);
 		}
 	}, [produtosCarrinho]);
+
+	function aumentaQuantidade(idProduto, quantidade) {
+		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
+		var carrinho = JSON.parse(produtosCarrinho);
+
+		// encontra o index baseado no id do produto clicado
+		var index = carrinho.findIndex((p) => p.isbn13 === idProduto);
+
+		// incrementa um a quantidade do item
+		carrinho[index].qtde = carrinho[index].qtde + 1;
+
+		// armazena o carrinho  atualizado em local storage
+		localStorage.setItem(
+			'@testePagarMe/carrinho',
+			JSON.stringify(carrinho)
+		);
+
+		// comunica ao elemento pai que houve uma mudanca nos itens do carrinho
+		setProdutosCarrinho(JSON.stringify(carrinho));
+	}
+
+	function diminuiQuantidade(idProduto, quantidade) {
+		// recebe a  lista dos produtos que estao no carrinho e converte em objeto
+		var carrinho = JSON.parse(produtosCarrinho);
+
+		// encontra o index baseado no id do produto clicado
+		var index = carrinho.findIndex((p) => p.isbn13 === idProduto);
+
+		// se tiver mais de um
+		if (quantidade > 1) {
+			// decrementa um a quantidade do item
+			carrinho[index].qtde = carrinho[index].qtde - 1;
+		}
+
+		// armazena o carrinho  atualizado em local storage
+		localStorage.setItem(
+			'@testePagarMe/carrinho',
+			JSON.stringify(carrinho)
+		);
+
+		// comunica ao elemento pai que houve uma mudanca nos itens do carrinho
+		setProdutosCarrinho(JSON.stringify(carrinho));
+	}
 
 	return (
 		<>
@@ -34,7 +77,7 @@ export default function Carrinho() {
 						</h1>
 						<ul className="vitrineCarrinho">
 							{listaProdutosCarrinho.map((produto) => (
-								<li key={produto.id}>
+								<li key={produto.isbn13}>
 									<ExcluirCarrinho
 										produtosCarrinho={produtosCarrinho}
 										setProdutosCarrinho={(
@@ -44,21 +87,51 @@ export default function Carrinho() {
 												produtosCarrinho
 											)
 										}
-										idProduto={produto.id}
+										idProduto={produto.isbn13}
 									/>
 									<div className="vitrineCarrinhoImagem">
 										<img src={produto.image} alt="" />
 									</div>
 									<div className="vitrineCarrinhoTexto">
-										{produto.title} <br />{' '}
-										<div className="qantidadeProduto">
-											<button>-</button>
+										<p>
+											{produto.title}{' '}
+											<span>
+												R${' '}
+												{parseFloat(
+													produto.price.substring(1)
+												).toFixed(2)}
+											</span>
+										</p>
+										<div className="vitrineCarrinhoQuantidade">
+											<button
+												onClick={() =>
+													diminuiQuantidade(
+														produto.isbn13,
+														produto.qtde
+													)
+												}
+											>
+												-
+											</button>
 											{produto.qtde}
-											<button>+</button>
+											<button
+												onClick={() =>
+													aumentaQuantidade(
+														produto.isbn13,
+														produto.qtde
+													)
+												}
+											>
+												+
+											</button>
 										</div>
 									</div>
 									<div className="vitrineCarrinhoPreco">
-										{`R$ ${produto.price.toFixed(2)}`}
+										{`R$ ${(
+											parseFloat(
+												produto.price.substring(1)
+											) * produto.qtde
+										).toFixed(2)}`}
 									</div>
 								</li>
 							))}
