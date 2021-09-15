@@ -2,12 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './CarrinhoSuspenso.scss';
-import {
-	IoClose,
-	IoArrowForward,
-	IoBagCheckOutline,
-	IoArrowBack,
-} from 'react-icons/io5';
+import { IoClose, IoArrowForward, IoCartOutline } from 'react-icons/io5';
 import Button from '../Button/Button';
 
 export default function CarrinhoSuspenso(props) {
@@ -27,6 +22,7 @@ export default function CarrinhoSuspenso(props) {
 		document
 			.getElementById('carrinhoSuspenso')
 			.classList.remove('carrinhoSuspenso--visible');
+		props.setExibeCarrinhoSuspenso(false);
 	}
 
 	return (
@@ -38,12 +34,12 @@ export default function CarrinhoSuspenso(props) {
 				<IoClose />
 			</div>
 			<div className="carrinhoSuspensoTitulo">
-				<IoBagCheckOutline /> Item Adicionado ao Carrinho!
+				<IoCartOutline /> Itens no Carrinho
 			</div>
 			<div className="listaProdutosCarrinho">
 				<ul>
 					{produtosCarrinho.reverse().map((produto) => (
-						<li key={produto.id}>
+						<li key={produto.isbn13}>
 							<div className="listaProdutosCarrinhoImagem">
 								<img src={produto.image} alt="" />
 							</div>
