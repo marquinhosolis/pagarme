@@ -52,27 +52,6 @@
 		justify-content: flex-start;
 		flex-wrap: wrap;
 	}
-	.loading {
-		width: 100%;
-		display: flex;
-		align-items: stretch;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		.singleSkeleton {
-			width: calc(50% - 16px) !important;
-			margin: 8px;
-			div {
-				margin-bottom: 10px;
-			}
-			@media (min-width: 768px) {
-				width: calc(33% - 16px) !important;
-			}
-			@media (min-width: 1024px) {
-				margin: 15px;
-				width: calc(25% - 30px) !important;
-			}
-		}
-	}
 	.produto {
 		transition: all linear 0.1s;
 		width: calc(50% - 16px);

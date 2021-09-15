@@ -6,6 +6,8 @@ import './Home.scss';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import CarrinhoSuspenso from '../../components/CarrinhoSuspenso/CarrinhoSuspenso';
+import CarregandoProdutos from '../../components/CarregandoProdutos/CarregandoProdutos';
+
 import BannerImage from '../../assets/images/Home_banner-cover-image.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
@@ -61,60 +63,7 @@ export default function Home() {
 			</div>
 			<div className="vitrineProdutos">
 				<div className="container">
-					{loading && (
-						<div className="loading">
-							<div className="loading">
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-								<div className="singleSkeleton">
-									<SkeletonLoader height="350px" />
-									<SkeletonLoader />
-									<SkeletonLoader width="80%" />
-									<SkeletonLoader />
-								</div>
-							</div>
-						</div>
-					)}
+					<CarregandoProdutos loading={loading} />
 
 					{produtos.map((item) => (
 						<div className="produto" key={item.isbn13}>
