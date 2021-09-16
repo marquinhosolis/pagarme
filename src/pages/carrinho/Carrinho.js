@@ -108,9 +108,8 @@ export default function Carrinho() {
 									</div>
 									<div className="vitrineCarrinhoTexto">
 										<p>
-											{produto.title}{' '}
+											{produto.title} - &nbsp;
 											<span>
-												{' '}
 												R${' '}
 												{parseFloat(
 													produto.price.substring(1)
@@ -167,12 +166,7 @@ export default function Carrinho() {
 									</tbody>
 								</table>
 							</div>
-							<p className="prazoEntrega">
-								Previsão de Entrega: 5 dias | 20 de julho
-							</p>
-							<Link to="/checkout">
-								<Button>prosseguir</Button>
-							</Link>
+							<Button>finalizar pagamento</Button>
 						</div>
 					)}
 				</div>

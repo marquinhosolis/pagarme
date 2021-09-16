@@ -57,6 +57,18 @@ export default function CarregandoProdutos(props) {
 							<SkeletonLoader width="80%" />
 							<SkeletonLoader />
 						</div>
+						<div className="singleSkeleton">
+							<SkeletonLoader height="350px" />
+							<SkeletonLoader />
+							<SkeletonLoader width="80%" />
+							<SkeletonLoader />
+						</div>
+						<div className="singleSkeleton">
+							<SkeletonLoader height="350px" />
+							<SkeletonLoader />
+							<SkeletonLoader width="80%" />
+							<SkeletonLoader />
+						</div>
 					</div>
 				</div>
 			)}

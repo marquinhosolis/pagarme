@@ -10,7 +10,6 @@ import Button from '../../components/Button/Button';
 import ExcluirCarrinho from '../../components/ExcluirCarrinho/ExcluirCarrinho';
 import { IoClose, IoArrowForward, IoCartOutline } from 'react-icons/io5';
 
-import BannerImage from '../../assets/images/Home_banner-cover-image.png';
 import AdicionarCarrinho from '../../components/AdicionarCarrinho/AdicionarCarrinho';
 export default function Home() {
 	// declarando variaveis para serem usadas com useState
@@ -118,17 +117,6 @@ export default function Home() {
 			</div>
 			<Header itemsCarrinho={produtosCarrinho} />
 			<main className="homeMain">
-				<div className="bannerCover">
-					<div className="container">
-						<h1>
-							<span>15%OFF</span>em produtos selecionados
-						</h1>
-						<img
-							src={BannerImage}
-							alt="Mulher com sacolas na mão"
-						/>
-					</div>
-				</div>
 				<div className="vitrineProdutos">
 					<div className="container">
 						<CarregandoProdutos loading={loading} />
@@ -141,7 +129,9 @@ export default function Home() {
 									<h3 className="tituloProduto">
 										{item.title}
 									</h3>
-									<p className="precoAntigo">R$ 899,00</p>
+									<p className="descricaoProduto">
+										{item.subtitle}
+									</p>
 									<p className="precoProduto">{`R$ ${parseFloat(
 										item.price.substring(1)
 									).toFixed(2)}`}</p>
