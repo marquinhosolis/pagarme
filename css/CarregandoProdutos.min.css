@@ -1,2 +1,0 @@
-.loading{width:100%;display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap}.loading .singleSkeleton{width:calc(50% - 16px) !important;margin:8px}.loading .singleSkeleton div{margin-bottom:10px}@media (min-width: 768px){.loading .singleSkeleton{width:calc(33% - 16px) !important}}@media (min-width: 1024px){.loading .singleSkeleton{margin:15px;width:calc(25% - 30px) !important}}
-/*# sourceMappingURL=CarregandoProdutos.min.css.map */
