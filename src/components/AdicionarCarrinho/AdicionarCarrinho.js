@@ -24,11 +24,34 @@ export default function AdicionarCarrinho(props) {
 			);
 			// comunica ao elemento pai que houve uma mudanca nos itens do carrinho
 			props.setProdutosCarrinho(JSON.stringify(carrinho));
+			
+			//exibe um alerta
+			const Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 2000,
+			});
+
+			Toast.fire({
+				icon: 'success',
+				title: 'Produto Adicionado!',
+			});
 
 			// se o produto já estiver no carrinho
 		} else {
 			//exibe um alerta
-			alert('Este produto já está no carrinho');
+			const Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 2000,
+			});
+
+			Toast.fire({
+				icon: 'info',
+				title: 'Este produto já está no carrinho',
+			});
 		}
 		// exibe o carrinho suspenso para que o usuario possa conferir o carrinho
 		props.setExibeCarrinhoSuspenso(true);
