@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
 
+import Swal from 'sweetalert2';
+
 export default function AdicionarCarrinho(props) {
 	function adicionarCarrinho() {
 		// declara a variavel carrinho como um array vazio para uso posterior
