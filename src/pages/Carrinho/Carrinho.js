@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 import './Carrinho.scss';
 
@@ -67,6 +68,13 @@ export default function Carrinho() {
 		// seta o valor total do carrinho com o resultado
 		setQuantidadeItens(somaUnidades);
 	}, [produtosCarrinho]);
+
+	function teste() {
+		Swal.fire({
+			icon: 'success',
+			title: 'Compra finalizada com sucesso!',
+		});
+	}
 
 	return (
 		<>
@@ -166,7 +174,9 @@ export default function Carrinho() {
 									</tbody>
 								</table>
 							</div>
-							<Button>finalizar pagamento</Button>
+							<div onClick={teste}>
+								<Button>finalizar pagamento</Button>
+							</div>
 						</div>
 					)}
 				</div>
